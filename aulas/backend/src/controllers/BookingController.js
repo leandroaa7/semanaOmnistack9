@@ -13,6 +13,9 @@ module.exports = {
             date
         });
 
+        //popula com os dados do relacionamento
+        //do spot e user, ou seja,
+        // cria um objeto com os dados de usuário e spot
         await booking
             .populate('spot')
             .populate('user')
