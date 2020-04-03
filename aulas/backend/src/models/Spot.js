@@ -18,7 +18,10 @@ const SpotSchema = new mongoose.Schema({
 
 //virtual elementos que não estão no banco mas podem ser gerados
 SpotSchema.virtual('thumbnail_url').get(function () {
-    return `http://localhost:3333/files/${this.thumbnail}`
+    // return `http://localhost:3333/files/${this.thumbnail}`
+    //192.168.1.39
+    return `http://192.168.1.39:3333/files/${this.thumbnail}`
+
 });
 
 module.exports = mongoose.model('Spot', SpotSchema);

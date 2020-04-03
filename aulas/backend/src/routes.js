@@ -16,6 +16,7 @@ routes.get('/sessions', SessionController.index)
 routes.get('/spots', SpotController.index);
 routes.post('/spots', upload.single('thumbnail'), SpotController.store);
 routes.post('/spots/:spot_id/bookings', BookingControler.store)
+routes.get('/spots/:spot_id/bookings', BookingControler.index)
 
 routes.get('/dashboard', DashboardController.show);
 
