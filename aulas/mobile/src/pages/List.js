@@ -4,7 +4,9 @@ import {
     Image,
     SafeAreaView, // View que não ultrapassa a status bar ou os cantos do começo da tela
     StyleSheet, //classe para criar os styles dos elementos
-    AsyncStorage // similar ao localstorage
+    AsyncStorage, // similar ao localstorage
+    ScrollView, // scroll vertical
+    TouchableOpacity,
 } from 'react-native';
 
 import SpotList from '../components/SpotList';
@@ -12,7 +14,7 @@ import SpotList from '../components/SpotList';
 import logo from '../assets/logo.png';
 
 
-export default function List() {
+export default function List({ navigation }) {
     const [techs, setTechs] = useState([]);
 
 
@@ -25,11 +27,21 @@ export default function List() {
         })
     }, [])
 
+    async function handleLogo() {
+        await AsyncStorage.setItem('user', '');
+        navigation.navigate('Login')
+    }
+
     return (
         <SafeAreaView style={styles.container}>
-            <Image style={styles.logo} source={logo} />
 
-            {techs.map(tech => <SpotList key={tech} tech={tech} />)}
+            <TouchableOpacity onPress={handleLogo}>
+                <Image style={styles.logo} source={logo} />
+            </TouchableOpacity>
+
+            <ScrollView>
+                {techs.map(tech => <SpotList key={tech} tech={tech} />)}
+            </ScrollView>
         </SafeAreaView>
     )
 }

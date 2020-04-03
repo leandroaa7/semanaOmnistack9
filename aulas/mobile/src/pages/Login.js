@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { View, AsyncStorage, KeyboardAvoidingView, Platform, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import {
+    View,
+    AsyncStorage,
+    KeyboardAvoidingView,
+    Platform,
+    Text,
+    Image,
+    StyleSheet,
+    TextInput,
+    TouchableOpacity
+} from 'react-native';
 
 import api from '../services/api';
 
@@ -11,11 +21,12 @@ export default function Login({ navigation }) {
     const [techs, setTechs] = useState('');
 
     useEffect(() => {
-        AsyncStorage.getItem('user').then(user => {
-            if (user) {
-                navigation.navigate('List');
-            }
-        })
+        AsyncStorage.getItem('user')
+            .then(user => {
+                if (user) {
+                    navigation.navigate('List');
+                }
+            })
     }, [])
 
     async function handleSubmit() {
@@ -111,4 +122,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16
     }
+
 })
