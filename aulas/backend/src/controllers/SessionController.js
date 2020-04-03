@@ -7,18 +7,18 @@ module.exports = {
         const users = await User.find();
         return res.json(users);
     },
-    show() {},
+    show() { },
     async store(req, res) {
         const { email } = req.body;
 
         let user = await User.findOne({ email });
         if (!user) {
             user = await User.create({ email })
-        } else {
-            return res.json(user);
         }
+        return res.json(user);
+
     },
-    update() {},
-    destroy() {},
+    update() { },
+    destroy() { },
 
 }
